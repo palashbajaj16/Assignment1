@@ -1,16 +1,19 @@
 package com.view;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import com.model.EmployData;
 
 public class Create {
-    int ln;
+    String filepath = "D:\\Git Projects\\EmployCrud\\src\\com\\employees.txt";
+    long linescounter = 0;
     EmployData emp = new EmployData();
     Scanner sc = new Scanner(System.in);
-    Create()
-    {
+
+    Create() throws IOException {
+        LineCounter();
         System.out.print("Enter Your Full Name : ");
         emp.setName(sc.next());
         System.out.print("Enter Your Email ID : ");
@@ -20,36 +23,16 @@ public class Create {
         System.out.print("Enter Your Date of Birth : ");
         emp.setDob(sc.next());
     }
-    public  void  countLine(){
-        try
-        {
-            RandomAccessFile raf = new RandomAccessFile("D:\\Git Projects\\EmployCrud\\src\\com\\employees.txt","rw");
-            for (int i=0;raf.readLine()!=null;i++)
-            {
-                 ln++;
-
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void LineCounter() throws IOException {
+        Path path = Paths.get(filepath);
+        linescounter = Files.lines(path).count();
+        emp.setId(linescounter);
     }
-    public void addData(){
-        try
-        {
-            RandomAccessFile raf = new RandomAccessFile("D:\\Git Projects\\EmployCrud\\src\\com\\employees.txt","rw");
-            for (int i=0;i<ln;i++)
-            {
-                raf.readLine();
-            }
-            emp.setId(ln);
-            //raf.writeBytes("\r\n");
-            raf.writeBytes(emp.getId()+","+emp.getName()+","+emp.getEmail()+","+emp.getAge()+","+emp.getDob()+"\r\n");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void AddData() throws IOException {
+        FileWriter fw = new FileWriter(filepath,true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(emp.getId() + "," + emp.getName() + "," + emp.getEmail() + "," + emp.getAge() + "," + emp.getDob() + "\n");
+        bw.close();
     }
 }
+

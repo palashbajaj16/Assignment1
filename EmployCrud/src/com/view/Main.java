@@ -20,8 +20,7 @@ public class Main {
             {
                 case 1:
                     Create insert = new Create();
-                    insert.countLine();
-                    insert.addData();
+                    insert.AddData();
                     break;
                 case 2:
                     Retrieve retrieve = new Retrieve();

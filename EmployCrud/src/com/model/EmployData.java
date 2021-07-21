@@ -11,28 +11,28 @@ public class EmployData {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         if(id<10)
         {
-           String strid = Integer.toString(id);
+           String strid = Long.toString(id);
            String convertedid = "000"+strid;
            this.id = convertedid;
         }
         if(id>=10 && id<100)
         {
-            String strid = Integer.toString(id);
+            String strid = Long.toString(id);
             String convertedid = "00"+strid;
             this.id = convertedid;
         }
         if(id>=100 && id<1000)
         {
-            String strid = Integer.toString(id);
+            String strid = Long.toString(id);
             String convertedid = "0"+strid;
             this.id = convertedid;
         }
         if(id==1000)
         {
-            this.id = Integer.toString(id);
+            this.id = Long.toString(id);
         }
     }
 
