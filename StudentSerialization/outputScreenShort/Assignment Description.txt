@@ -1,0 +1,11 @@
+Assignment Number 5 Output Description
+
+Screenshort 1 : In the screenshot 1, I have got the serialization and deserialization of output1.ser
+
+Screenshort 2 : In the screenshot 2, I have got the  serialization and deserialization of output2.ser
+
+Screenshort3 : I got a runtime error after changing the date format in output1.ser
+
+Screenshort4 : I got a runtime error after changing the date format in output2.ser also
+
+Screenshort5 : After regenerating output 2 the error went away
