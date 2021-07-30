@@ -8,6 +8,8 @@ public class Shapes {
     private double side;
     private double base;
 
+    public Shapes() {
+    }
 
     public void setRadius(double radius) {
         this.radius = radius;

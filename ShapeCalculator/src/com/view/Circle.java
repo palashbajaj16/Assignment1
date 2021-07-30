@@ -14,7 +14,7 @@ public class Circle implements ShapeCalculatorFunctions {
         sp.setRadius(sc.nextDouble());
     }
 
-    //  Function Overriding
+    // Function Overriding
 
     @Override
     public double perimeter() {

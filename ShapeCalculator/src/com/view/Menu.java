@@ -1,4 +1,5 @@
 package com.view;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -8,10 +9,10 @@ public class Menu {
             while (true){
                 try {
                     int choice;
-                    System.out.println("\n******************** Calculator *********************");
-                    System.out.println("| 1 Circle      ⭕  | 2 Cylinder  🗑 | 3 Rectangle  💶");
-                    System.out.println("| 4 Sphere  🔴 | 5 Square     ⬜  | 6 Triangle      🔺");
-                    System.out.println("---------------------| 7 Exit          🚪  |----------------------");
+                    System.out.println("\n******** Calculator Area and Perimeter *********");
+                    System.out.println("| 1 Circle  ⭕ | 2 Cylinder   🗑 | 3 Rectangle  💶");
+                    System.out.println("| 4 Sphere  🔴 | 5 Square     ⬜ | 6 Triangle   🔺");
+                    System.out.println("--------------| 7 Exit        🚪 |---------------");
 
 
                     System.out.print("Enter your choice : ");
@@ -66,8 +67,12 @@ public class Menu {
 
                 }
                 catch(NumberFormatException ex) {
-                    System.out.println("Please Enter valid Input....");
+                    System.out.println("Please Enter a valid number....");
                     ex.printStackTrace();
+                }
+                catch(InputMismatchException ex) {
+                    System.out.println("Please Enter a valid number....");
+                    sc.nextLine();
                 }
             }
 
