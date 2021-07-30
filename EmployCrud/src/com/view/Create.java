@@ -26,7 +26,8 @@ public class Create {
     public void LineCounter() throws IOException {
         Path path = Paths.get(filepath);
         linescounter = Files.lines(path).count();
-        emp.setId(linescounter);
+        String n = String.format("%04d",linescounter);
+        emp.setId(n);
     }
     public void AddData() throws IOException {
         FileWriter fw = new FileWriter(filepath,true);

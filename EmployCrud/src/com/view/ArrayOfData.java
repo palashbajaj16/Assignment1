@@ -25,7 +25,6 @@ public class ArrayOfData
         {
             System.err.println("Error: " + e.getMessage());
         }
-        System.out.println(empList);
         return empList;
     }
 }
