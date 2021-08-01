@@ -1,18 +1,18 @@
 package com.view;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws NullPointerException
     {
         ReadFile rf = new ReadFile();
         ReadUrls ru = new ReadUrls();
         rf.urlRead("C:\\Users\\Palash\\IdeaProjects\\WordCounter\\src\\urls.txt");
         rf.wordsRead("C:\\Users\\Palash\\IdeaProjects\\WordCounter\\src\\words.txt");
-        ArrayList<String> wordsArray = new ArrayList<>();
-        ArrayList<Integer> countArray = new ArrayList<>();
-
+        TreeMap<String,Integer> map = new TreeMap<>();
+        System.out.println("\nOutput #1");
+        System.out.println("========");
         for(String urls : rf.urlList)
         {
             System.out.println(urls);
@@ -27,26 +27,29 @@ public class Main {
                         count++;
                     }
                 }
-                System.out.println(rf.wordsList.get(j)+" "+ count);
-                wordsArray.add(rf.wordsList.get(j));
-                countArray.add(count);
-            }
-        }
-        for(int x=0;x<rf.wordsList.size();x++)
-        {
-            int addcount = 0;
-            for(int y=0;y<wordsArray.size();y++)
-            {
-                if(rf.wordsList.get(x)==wordsArray.get(y))
+                if(count!=0)
                 {
-                    addcount = addcount + countArray.get(y);
+                    System.out.println(rf.wordsList.get(j)+" - "+ count);
+                }
+                String word = rf.wordsList.get(j);
+                if(map.containsKey(word))
+                {
+                    int newcount = map.get(word)+count;
+                    map.put(word,newcount);
+                }
+                else
+                {
+                    map.put(word,count);
                 }
             }
-
-
         }
-        //System.out.println(wordsArray);
-        //System.out.println(countArray);
+        //System.out.println(map);
+        System.out.println("\n==============================");
+        System.out.println("Output #2");
+        System.out.println("========");
+        for( Map.Entry<String,Integer> entry : map.entrySet() ){
+            System.out.println( entry.getKey() + " - " + entry.getValue() );
+        }
 
     }
 }
